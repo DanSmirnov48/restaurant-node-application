@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>{{title}}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Restaurant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="/dishes/all">Menu</a>
+                    {{^user}}
+                        {{! value is false }}
+                        <a class="nav-link" href="/chefs-special">Chef's Special</a>
+                    {{/user}}
+                    {{#user}}
+                        {{! value is true }}
+                        <a class="nav-link" href="/new">New</a>
+                        <a class="nav-link" href="/chefs-special-admin">Chef's Special</a>
+                    {{/user}}
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    {{^user}}
+                        <a id="login" href="/login" class="btn btn-light mr-2">Sign in</a>
+                        <a id="login" href="/register" class="btn btn-light">Register</a>
+                    {{/user}}
+                    {{#user}}
+                        <a id="logout" href="/logout" class="btn btn-primary">Sign out</a>
+                    {{/user}}
+                </ul>
+                
+            </div>
+        </div>
+    </nav>  
+</body>
+</html>

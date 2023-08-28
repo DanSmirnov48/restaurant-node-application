@@ -1,0 +1,56 @@
+<html>
+    <head>
+        {{>header}}
+    </head>
+    <body>
+        <div class="container mx-auto mt-4">
+            <div class="row mt-4">
+                {{#entries}}
+                    <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{dishImage}}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                            <h5 class="card-title">{{dishName}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">£{{dishPrice}}</h6>
+                            <p class="card-text">{{dishDesc}}</p>
+                            <a href="/dishes/name/{{dishName}}" class="btn btn-dark">View</a>
+                            <a href="/delete/{{dishName}}" class="btn btn-dark">Delete</a>
+                            {{#dishAvailible}}
+                                <a href="/availbility/{{dishName}}/{{dishAvailible}}" class="btn btn-danger">Hide</a>
+                            {{/dishAvailible}}
+
+                            {{^dishAvailible}}
+                                <a href="/availbility/{{dishName}}/{{dishAvailible}}" class="btn btn-success">Show</a>
+                            {{/dishAvailible}}
+                        </div>
+                    </div>
+                    </div>
+
+
+
+                {{/entries}}
+                {{^entries}}
+                    <div class="center-container">
+                        <h1 class="text-center">This is the about page</h1>
+                    </div>
+                {{/entries}}
+
+            </div>
+        </div>
+        <style>
+            .card {
+                width: 20rem;
+                background: #222;
+                border: 1px solid #dd2476;
+                color: rgba(250, 250, 250, 0.8);
+                margin-bottom: 2rem;
+            }
+            body {
+                background: #111;
+            }
+            h1{
+                color: white
+            }
+        </style>
+    </body>
+</html>

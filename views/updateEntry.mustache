@@ -1,0 +1,64 @@
+<head>
+{{>header}}
+</head>
+<body>
+    <div class="container">
+        {{#entry}}
+        <h2>Update {{dishName}}</h2>
+        <form method="post" role="form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="dishName">Dish Name</label>
+                <input type="text" class="form-control" id="dishName" name="dishName" value="{{dishName}}" placeholder="Enter a dish name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dishPrice">Dish Price</label>
+                <input type="text" class="form-control" id="dishPrice" name="dishPrice" value="{{dishPrice}}" placeholder="Enter a dish price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dishType">Dish Type</label>
+                <select class="form-control" id="dishType" name="dishType" placeholder="Choose a dish type" required>
+                    
+                    {{#dinner}}
+                        <option value="lunch">Lunch</option>
+                        <option selected value="dinner">Dinner</option>
+                    {{/dinner}}
+
+                    {{^dinner}}
+                        <option selected value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                    {{/dinner}}
+                    
+                </select>  
+            </div>
+
+            <div class="form-group">
+                <label for="dishDesc">Dish Description</label>
+                <textarea class="form-control" id="dishDesc" name="dishDesc" placeholder="Enter dish description" rows="3" required>{{dishDesc}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dishIngredients">Dish Ingredients</label>
+                <textarea class="form-control" id="dishIngredients" name="dishIngredients" placeholder="Enter dish ingredients separated with ,(comma)" rows="2" required>{{dishIngredients}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dishallergies">Dish Allergies</label>
+                <textarea class="form-control" id="dishallergies" name="dishallergies" placeholder="Enter dish allergies separated with ,(comma)" rows="2" required>{{dishallergies}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image</label>
+                <img src="../{{dishImage}}" class="rounded float-left" alt="...">
+                <input type="file" class="form-control" id="image" name="image" placeholder="Select an image" accept="image/png, image/jpg" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Post entry" class="btn btn-dark">
+            </div>
+        </form>
+
+        {{/entry}}
+     </div>
+</body>
